@@ -3,6 +3,7 @@ import DiceGame from "./games/DiceGame";
 import { NexusProvider } from "./components/NexusProvider";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import GameHistoryModal from "./components/GameHistoryModal";
+import { NexusDemo } from "./components/NexusDemo";
 
 function ConnectButton() {
   const { address, isConnected } = useAccount();
@@ -33,6 +34,7 @@ function ConnectButton() {
 function AppContent() {
   const { isConnected } = useAccount();
   const [showHistory, setShowHistory] = useState(false);
+  const [showNexusDemo, setShowNexusDemo] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
@@ -57,13 +59,22 @@ function AppContent() {
               </div>
               <div className="flex items-center space-x-3">
                 {isConnected && (
-                  <button
-                    onClick={() => setShowHistory(true)}
-                    className="px-4 py-2 bg-purple-600/80 hover:bg-purple-600 text-white rounded-lg border border-purple-500/50 transition-all duration-200 text-sm font-medium flex items-center gap-2 shadow-lg"
-                  >
-                    <span>📊</span>
-                    <span>My Stats</span>
-                  </button>
+                  <>
+                    <button
+                      onClick={() => setShowNexusDemo(true)}
+                      className="px-4 py-2 bg-blue-600/80 hover:bg-blue-600 text-white rounded-lg border border-blue-500/50 transition-all duration-200 text-sm font-medium flex items-center gap-2 shadow-lg"
+                    >
+                      <span>🌉</span>
+                      <span>Nexus Demo</span>
+                    </button>
+                    <button
+                      onClick={() => setShowHistory(true)}
+                      className="px-4 py-2 bg-purple-600/80 hover:bg-purple-600 text-white rounded-lg border border-purple-500/50 transition-all duration-200 text-sm font-medium flex items-center gap-2 shadow-lg"
+                    >
+                      <span>📊</span>
+                      <span>My Stats</span>
+                    </button>
+                  </>
                 )}
                 <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full border border-green-500/30 text-sm">
                   Live
@@ -87,7 +98,7 @@ function AppContent() {
             </p>
           </div>
           
-          <DiceGame />
+          {showNexusDemo ? <NexusDemo /> : <DiceGame />}
           
           <div className="mt-16 text-center">
             <div className="inline-flex items-center space-x-2 text-sm text-gray-400">
@@ -111,6 +122,28 @@ function AppContent() {
 
       {/* Game History Modal */}
       <GameHistoryModal isOpen={showHistory} onClose={() => setShowHistory(false)} />
+      
+      {/* Nexus Demo Modal */}
+      {showNexusDemo && (
+        <div className="fixed inset-0 z-[100000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="bg-gradient-to-br from-gray-900 to-purple-900 rounded-3xl shadow-2xl border-2 border-purple-500/50 max-w-6xl w-full max-h-[90vh] overflow-hidden">
+            <div className="p-6 border-b border-purple-500/30 bg-gradient-to-r from-purple-600/20 to-pink-600/20">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-white">🌉 Nexus SDK Demo</h2>
+                <button
+                  onClick={() => setShowNexusDemo(false)}
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xl transition-all hover:rotate-90"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
+              <NexusDemo />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
