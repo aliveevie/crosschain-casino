@@ -4,6 +4,7 @@ import { NexusProvider } from "./components/NexusProvider";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import GameHistoryModal from "./components/GameHistoryModal";
 import { NexusDemo } from "./components/NexusDemo";
+import { BridgeExecuteDemo } from "./components/BridgeExecuteDemo";
 import { NexusEventLogger } from "./components/NexusEventLogger";
 import { NexusStatusIndicator } from "./components/NexusStatusIndicator";
 import { NexusErrorBoundary } from "./components/NexusErrorBoundary";
@@ -40,6 +41,7 @@ function AppContent() {
   const { isConnected } = useAccount();
   const [showHistory, setShowHistory] = useState(false);
   const [showNexusDemo, setShowNexusDemo] = useState(false);
+  const [showBridgeDemo, setShowBridgeDemo] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
