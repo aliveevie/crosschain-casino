@@ -50,11 +50,16 @@
 
 ## 🌉 Avail Nexus SDK Integration
 
+> **📋 Implementation Details**: [View PR #1: Nexus SDK Integration](https://github.com/aliveevie/crosschain-casino/pull/1) - 31 commits showcasing comprehensive SDK integration
+
 This project demonstrates **meaningful use of the Avail Nexus SDK** through comprehensive integration across the application.
 
 ### 📦 SDK Components Used
 
 #### 1. **Nexus Widgets Integration**
+
+> **📁 See Implementation**: [`src/components/BridgePlayButton.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/BridgePlayButton.tsx) | [PR #1](https://github.com/aliveevie/crosschain-casino/pull/1)
+
 We utilize the `@avail-project/nexus-widgets` package to provide rich, interactive cross-chain functionality:
 
 ```typescript
@@ -76,11 +81,14 @@ import { BridgeAndExecuteButton } from "@avail-project/nexus-widgets";
 ```
 
 **Key Components:**
-- `BridgeAndExecuteButton` - Core bridge and execute functionality
-- `AvailNexusProvider` - SDK context provider for wallet and chain management
+- `BridgeAndExecuteButton` - Core bridge and execute functionality ([Implementation](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/BridgePlayButton.tsx))
+- `AvailNexusProvider` - SDK context provider for wallet and chain management ([Implementation](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusProvider.tsx))
 - `useNexus()` - Hook for accessing SDK state and functions
 
 #### 2. **Nexus Core Integration**
+
+> **📁 See Implementation**: [`src/components/NexusProvider.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusProvider.tsx) | [PR #1](https://github.com/aliveevie/crosschain-casino/pull/1)
+
 Deep integration with nexus-core for wallet and provider management:
 
 ```typescript
@@ -98,36 +106,39 @@ useEffect(() => {
 ```
 
 **Implementation Highlights:**
-- Automatic wallet provider detection and initialization
-- Cross-chain wallet state management
-- Chain switching and validation
-- Event-driven architecture for SDK interactions
+- Automatic wallet provider detection and initialization ([Code](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusProvider.tsx))
+- Cross-chain wallet state management ([Code](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusWalletProvider.tsx))
+- Chain switching and validation ([Code](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useNexusChain.ts))
+- Event-driven architecture for SDK interactions ([Code](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useNexusEvents.ts))
 
 #### 3. **Custom Nexus Infrastructure**
+
+> **📋 Full Implementation**: [View all commits in PR #1](https://github.com/aliveevie/crosschain-casino/pull/1/commits)
+
 Built comprehensive infrastructure on top of Nexus SDK:
 
 **Components** (7 custom components):
-- `NexusProvider` - Enhanced provider with wallet integration
-- `NexusWalletProvider` - Wallet state management context
-- `NexusChainSelector` - Dynamic chain selection UI
-- `NexusStatusIndicator` - Real-time SDK status display
-- `NexusEventLogger` - Development tools for SDK monitoring
-- `NexusErrorBoundary` - Comprehensive error handling
-- `NexusDebugPanel` - Advanced debugging interface
+- [`NexusProvider`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusProvider.tsx) - Enhanced provider with wallet integration
+- [`NexusWalletProvider`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusWalletProvider.tsx) - Wallet state management context
+- [`NexusChainSelector`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusChainSelector.tsx) - Dynamic chain selection UI
+- [`NexusStatusIndicator`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusStatusIndicator.tsx) - Real-time SDK status display
+- [`NexusEventLogger`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusEventLogger.tsx) - Development tools for SDK monitoring
+- [`NexusErrorBoundary`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusErrorBoundary.tsx) - Comprehensive error handling
+- [`NexusDebugPanel`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/NexusDebugPanel.tsx) - Advanced debugging interface
 
 **Hooks** (6 custom hooks):
-- `useNexusWallet` - Wallet connection management
-- `useNexusChain` - Chain switching and validation
-- `useNexusEvents` - Event listening and filtering
-- `useNexusLoading` - Loading state management
-- `useBridgeExecute` - Bridge and execute workflow
-- `useCrossChainBalance` - Multi-chain balance tracking
+- [`useNexusWallet`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useNexusWallet.ts) - Wallet connection management
+- [`useNexusChain`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useNexusChain.ts) - Chain switching and validation
+- [`useNexusEvents`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useNexusEvents.ts) - Event listening and filtering
+- [`useNexusLoading`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useNexusLoading.ts) - Loading state management
+- [`useBridgeExecute`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useBridgeExecute.ts) - Bridge and execute workflow
+- [`useCrossChainBalance`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useCrossChainBalance.ts) - Multi-chain balance tracking
 
 **Services & Utilities**:
-- `nexusService` - Centralized SDK operations
-- `nexusLogger` - Structured logging system
-- `nexusValidation` - Comprehensive validation utilities
-- `nexusHelpers` - SDK utility functions
+- [`nexusService`](https://github.com/aliveevie/crosschain-casino/blob/main/src/services/nexusService.ts) - Centralized SDK operations
+- [`nexusLogger`](https://github.com/aliveevie/crosschain-casino/blob/main/src/utils/nexusLogger.ts) - Structured logging system
+- [`nexusValidation`](https://github.com/aliveevie/crosschain-casino/blob/main/src/utils/nexusValidation.ts) - Comprehensive validation utilities
+- [`nexusHelpers`](https://github.com/aliveevie/crosschain-casino/blob/main/src/utils/nexusHelpers.ts) - SDK utility functions
 
 ### 📊 Nexus SDK Usage Statistics
 
@@ -156,6 +167,8 @@ Access the comprehensive Nexus SDK demonstration:
 
 ## ⚡ Bridge & Execute Feature
 
+> **📋 Implementation Details**: [View PR #2: Bridge & Execute Feature](https://github.com/aliveevie/crosschain-casino/pull/2) - 16 commits showcasing cross-chain intent interactions
+
 The **Bridge & Execute** feature is the cornerstone of this application, enabling users to bridge tokens across chains and execute transactions in a single operation.
 
 ### 🎯 How It Works
@@ -178,6 +191,12 @@ The **Bridge & Execute** feature is the cornerstone of this application, enablin
 
 ### 🚀 Implementation Details
 
+> **📁 Core Files**: 
+> - [`BridgeExecuteButton.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/BridgeExecuteButton.tsx) - Main bridge component
+> - [`useBridgeExecute.ts`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useBridgeExecute.ts) - Bridge execution hook
+> - [`bridgeService.ts`](https://github.com/aliveevie/crosschain-casino/blob/main/src/services/bridgeService.ts) - Bridge service layer
+> - [View all files in PR #2](https://github.com/aliveevie/crosschain-casino/pull/2/files)
+
 #### Step 1: Parameter Validation
 ```typescript
 // Comprehensive validation before execution
@@ -191,6 +210,7 @@ if (!validation.isValid) {
   throw new Error(validation.errors.join(', '));
 }
 ```
+📁 **Code**: [`crossChainValidation.ts`](https://github.com/aliveevie/crosschain-casino/blob/main/src/utils/crossChainValidation.ts)
 
 #### Step 2: Bridge Estimation
 ```typescript
@@ -204,6 +224,7 @@ const estimate = await bridgeService.estimateBridge(
 console.log(`Estimated time: ${estimate.estimatedTime}ms`);
 console.log(`Estimated fee: ${estimate.feeEstimate}`);
 ```
+📁 **Code**: [`bridgeService.ts`](https://github.com/aliveevie/crosschain-casino/blob/main/src/services/bridgeService.ts)
 
 #### Step 3: Bridge Execution
 ```typescript
@@ -218,6 +239,7 @@ const bridgeResult = await bridgeService.executeBridge(
 // Monitor progress
 await monitorBridgeProgress(bridgeResult.bridgeId);
 ```
+📁 **Code**: [`useCrossChainTransaction.ts`](https://github.com/aliveevie/crosschain-casino/blob/main/src/hooks/useCrossChainTransaction.ts)
 
 #### Step 4: Game Execution
 ```typescript
@@ -228,34 +250,37 @@ const gameResult = await nexusService.executeDiceGame(
   destinationChainId
 );
 ```
+📁 **Code**: [`nexusService.ts`](https://github.com/aliveevie/crosschain-casino/blob/main/src/services/nexusService.ts)
 
 ### 📈 Bridge & Execute Features
 
-1. **Cross-Chain Game Interface**
+> **📋 See All Implementations**: [PR #2 Files Changed](https://github.com/aliveevie/crosschain-casino/pull/2/files)
+
+1. **Cross-Chain Game Interface** ([`CrossChainGameInterface.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/CrossChainGameInterface.tsx))
    - Source and destination chain selection
    - Bet amount configuration
    - Dice guess selection (1-6)
    - Real-time progress tracking
 
-2. **Bridge Route Optimization**
+2. **Bridge Route Optimization** ([`BridgeRouteSelector.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/BridgeRouteSelector.tsx))
    - Multiple route discovery
    - Fee comparison and estimation
    - Time estimation for each route
    - Optimal route selection (fastest/cheapest/most reliable)
 
-3. **Transaction Monitoring**
+3. **Transaction Monitoring** ([`BridgeProgressIndicator.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/BridgeProgressIndicator.tsx))
    - Step-by-step progress indicators
    - Real-time status updates
    - Transaction hash display
    - Error handling and recovery
 
-4. **Cross-Chain Balance Management**
+4. **Cross-Chain Balance Management** ([`CrossChainBalanceDisplay.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/CrossChainBalanceDisplay.tsx))
    - Multi-chain balance fetching
    - Real-time balance updates
    - Currency-specific displays (POL/ETH)
    - Total portfolio value aggregation
 
-5. **Transaction History**
+5. **Transaction History** ([`BridgeTransactionHistory.tsx`](https://github.com/aliveevie/crosschain-casino/blob/main/src/components/BridgeTransactionHistory.tsx))
    - Complete bridge operation history
    - Status tracking for all transactions
    - Bridge statistics and analytics
