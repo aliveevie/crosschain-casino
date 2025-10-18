@@ -4,6 +4,7 @@ import { NexusProvider } from "./components/NexusProvider";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 import GameHistoryModal from "./components/GameHistoryModal";
 import { NexusDemo } from "./components/NexusDemo";
+import { NexusEventLogger } from "./components/NexusEventLogger";
 
 function ConnectButton() {
   const { address, isConnected } = useAccount();
@@ -144,6 +145,9 @@ function AppContent() {
           </div>
         </div>
       )}
+      
+      {/* Nexus Event Logger */}
+      <NexusEventLogger />
     </div>
   );
 }
