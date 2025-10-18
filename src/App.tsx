@@ -75,6 +75,13 @@ function AppContent() {
                       <span>Nexus Demo</span>
                     </button>
                     <button
+                      onClick={() => setShowBridgeDemo(true)}
+                      className="px-4 py-2 bg-green-600/80 hover:bg-green-600 text-white rounded-lg border border-green-500/50 transition-all duration-200 text-sm font-medium flex items-center gap-2 shadow-lg"
+                    >
+                      <span>🌉</span>
+                      <span>Bridge & Execute</span>
+                    </button>
+                    <button
                       onClick={() => setShowHistory(true)}
                       className="px-4 py-2 bg-purple-600/80 hover:bg-purple-600 text-white rounded-lg border border-purple-500/50 transition-all duration-200 text-sm font-medium flex items-center gap-2 shadow-lg"
                     >
@@ -106,7 +113,13 @@ function AppContent() {
             </p>
           </div>
           
-          {showNexusDemo ? <NexusDemo /> : <DiceGame />}
+          {showBridgeDemo ? (
+            <BridgeExecuteDemo />
+          ) : showNexusDemo ? (
+            <NexusDemo />
+          ) : (
+            <DiceGame />
+          )}
           
           <div className="mt-16 text-center">
             <div className="inline-flex items-center space-x-2 text-sm text-gray-400">
@@ -130,6 +143,28 @@ function AppContent() {
 
       {/* Game History Modal */}
       <GameHistoryModal isOpen={showHistory} onClose={() => setShowHistory(false)} />
+      
+      {/* Bridge & Execute Demo Modal */}
+      {showBridgeDemo && (
+        <div className="fixed inset-0 z-[100000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="bg-gradient-to-br from-gray-900 to-green-900 rounded-3xl shadow-2xl border-2 border-green-500/50 max-w-7xl w-full max-h-[90vh] overflow-hidden">
+            <div className="p-6 border-b border-green-500/30 bg-gradient-to-r from-green-600/20 to-blue-600/20">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-white">🌉 Bridge & Execute Demo</h2>
+                <button
+                  onClick={() => setShowBridgeDemo(false)}
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xl transition-all hover:rotate-90"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
+              <BridgeExecuteDemo />
+            </div>
+          </div>
+        </div>
+      )}
       
       {/* Nexus Demo Modal */}
       {showNexusDemo && (
