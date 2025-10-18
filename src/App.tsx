@@ -5,6 +5,7 @@ import { useAccount, useConnect, useDisconnect } from "wagmi";
 import GameHistoryModal from "./components/GameHistoryModal";
 import { NexusDemo } from "./components/NexusDemo";
 import { NexusEventLogger } from "./components/NexusEventLogger";
+import { NexusStatusIndicator } from "./components/NexusStatusIndicator";
 
 function ConnectButton() {
   const { address, isConnected } = useAccount();
@@ -77,6 +78,7 @@ function AppContent() {
                     </button>
                   </>
                 )}
+                <NexusStatusIndicator />
                 <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full border border-green-500/30 text-sm">
                   Live
                 </span>
