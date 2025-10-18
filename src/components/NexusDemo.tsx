@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNexusWalletContext } from "./NexusWalletProvider";
 import { NexusChainSelector } from "./NexusChainSelector";
 import { NexusWalletStatus, NexusSupportedChains } from "./NexusWalletStatus";
+import { NexusChainInfo } from "./NexusChainInfo";
 import { NEXUS_CONFIG, type ChainId } from "../lib/nexus-config";
 import { getChainCurrency, getChainName } from "../utils/chainUtils";
 
@@ -52,23 +53,7 @@ export function NexusDemo() {
             label="Select Network for Demo"
           />
           
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Selected Network Info</h3>
-            <div className="bg-white/10 rounded-lg p-4 space-y-2">
-              <div className="flex justify-between">
-                <span className="text-gray-300">Network:</span>
-                <span className="text-white font-medium">{getChainName(selectedChain)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-300">Currency:</span>
-                <span className="text-white font-medium">{getChainCurrency(selectedChain)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-300">Chain ID:</span>
-                <span className="text-white font-medium">{selectedChain}</span>
-              </div>
-            </div>
-          </div>
+          <NexusChainInfo />
         </div>
       </div>
 
