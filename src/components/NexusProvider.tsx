@@ -5,6 +5,7 @@ import { base, polygon, mainnet, arbitrum, optimism } from "wagmi/chains";
 import { injected } from "wagmi/connectors";
 import { NexusProvider as AvailNexusProvider, useNexus } from "@avail-project/nexus-widgets";
 import { useAccount } from "wagmi";
+import { NexusWalletProvider } from "./NexusWalletProvider";
 
 // Create wagmi config
 const wagmiConfig = createConfig({
@@ -63,7 +64,9 @@ export function NexusProvider({ children }: { children: ReactNode }) {
           }}
         >
           <NexusInitializer>
-            {children}
+            <NexusWalletProvider>
+              {children}
+            </NexusWalletProvider>
           </NexusInitializer>
         </AvailNexusProvider>
       </QueryClientProvider>
