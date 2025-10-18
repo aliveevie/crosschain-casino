@@ -6,6 +6,7 @@ import GameHistoryModal from "./components/GameHistoryModal";
 import { NexusDemo } from "./components/NexusDemo";
 import { NexusEventLogger } from "./components/NexusEventLogger";
 import { NexusStatusIndicator } from "./components/NexusStatusIndicator";
+import { NexusErrorBoundary } from "./components/NexusErrorBoundary";
 
 function ConnectButton() {
   const { address, isConnected } = useAccount();
@@ -156,8 +157,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <NexusProvider>
-      <AppContent />
-    </NexusProvider>
+    <NexusErrorBoundary>
+      <NexusProvider>
+        <AppContent />
+      </NexusProvider>
+    </NexusErrorBoundary>
   );
 }
