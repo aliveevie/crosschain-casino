@@ -8,6 +8,7 @@ import { NexusEventLogger } from "./components/NexusEventLogger";
 import { NexusStatusIndicator } from "./components/NexusStatusIndicator";
 import { NexusErrorBoundary } from "./components/NexusErrorBoundary";
 import { NexusNotification } from "./components/NexusNotification";
+import { NexusDebugPanel } from "./components/NexusDebugPanel";
 
 function ConnectButton() {
   const { address, isConnected } = useAccount();
@@ -155,6 +156,9 @@ function AppContent() {
       
       {/* Nexus Notifications */}
       <NexusNotification />
+      
+      {/* Nexus Debug Panel */}
+      <NexusDebugPanel />
     </div>
   );
 }
