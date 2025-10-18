@@ -1,0 +1,391 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Nexus Bridge Button Container */
+.nexus-bridge-button-container {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom Play Button Styling */
+.nexus-play-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.nexus-play-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.nexus-play-button:hover::before {
+  left: 100%;
+}
+
+.nexus-play-button:hover {
+  animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4), 0 0 60px rgba(236, 72, 153, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.6), 0 0 80px rgba(236, 72, 153, 0.4);
+  }
+}
+
+/* ===============================================
+   PROFESSIONAL NEXUS SDK MODAL CENTERING & STYLING
+   =============================================== */
+
+/* Target ALL possible modal containers from Nexus SDK */
+body > div[style*="position: fixed"],
+body > div[style*="z-index"],
+#radix-portal,
+[data-radix-portal],
+div[data-radix-portal] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  padding: 20px !important;
+  overflow-y: auto !important;
+}
+
+/* Dialog/Modal Content - Force Center */
+div[role="dialog"],
+[role="dialog"],
+div[class*="Dialog"],
+div[class*="dialog"],
+div[class*="Modal"],
+div[class*="modal"] {
+  position: relative !important;
+  margin: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  z-index: 1000000 !important;
+  background: linear-gradient(145deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%) !important;
+  border-radius: 28px !important;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(147, 51, 234, 0.3),
+    0 0 120px rgba(168, 85, 247, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  max-width: 520px !important;
+  width: 100% !important;
+  max-height: 85vh !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(147, 51, 234, 0.4) !important;
+  animation: modalAppear 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Modal Header */
+div[role="dialog"] > div:first-child,
+div[role="dialog"] header {
+  padding: 24px 28px !important;
+  border-bottom: 1px solid rgba(147, 51, 234, 0.2) !important;
+  background: linear-gradient(180deg, rgba(147, 51, 234, 0.15) 0%, transparent 100%) !important;
+}
+
+div[role="dialog"] h2,
+div[role="dialog"] h3,
+div[role="dialog"] [class*="title"],
+div[role="dialog"] [class*="Title"],
+div[role="dialog"] [class*="heading"],
+div[role="dialog"] [class*="Heading"] {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Modal Body/Content */
+div[role="dialog"] > div:not(:first-child):not(:last-child),
+div[role="dialog"] [class*="content"],
+div[role="dialog"] [class*="Content"] {
+  padding: 28px !important;
+  overflow-y: auto !important;
+  max-height: calc(85vh - 180px) !important;
+}
+
+/* Fix ALL text colors to be readable */
+div[role="dialog"] *:not(button):not(svg) {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+div[role="dialog"] h1,
+div[role="dialog"] h2,
+div[role="dialog"] h3,
+div[role="dialog"] h4,
+div[role="dialog"] h5,
+div[role="dialog"] h6 {
+  color: #ffffff !important;
+}
+
+/* Labels and Descriptions - HIGHLY VISIBLE */
+div[role="dialog"] label,
+div[role="dialog"] [class*="label"],
+div[role="dialog"] [class*="Label"] {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
+/* Text Elements - ALL READABLE */
+div[role="dialog"] p,
+div[role="dialog"] span:not(button span),
+div[role="dialog"] div:not([role]):not([class*="button"]):not([class*="Button"]) {
+  color: rgba(255, 255, 255, 0.9) !important;
+  line-height: 1.6 !important;
+}
+
+/* Small text / helper text */
+div[role="dialog"] small,
+div[role="dialog"] [class*="helper"],
+div[role="dialog"] [class*="Helper"],
+div[role="dialog"] [class*="description"],
+div[role="dialog"] [class*="Description"] {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.875rem !important;
+}
+
+/* Scrollbar Styling */
+div[role="dialog"] ::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+div[role="dialog"] ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border-radius: 10px !important;
+  margin: 8px !important;
+}
+
+div[role="dialog"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #9333ea, #db2777) !important;
+  border-radius: 10px !important;
+  border: 2px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+div[role="dialog"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a855f7, #ec4899) !important;
+}
+
+/* Input Fields */
+div[role="dialog"] input,
+div[role="dialog"] select,
+div[role="dialog"] textarea {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 2px solid rgba(147, 51, 234, 0.3) !important;
+  border-radius: 14px !important;
+  padding: 14px 18px !important;
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  transition: all 0.25s ease !important;
+  width: 100% !important;
+}
+
+div[role="dialog"] input::placeholder,
+div[role="dialog"] textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+div[role="dialog"] input:focus,
+div[role="dialog"] select:focus,
+div[role="dialog"] textarea:focus {
+  outline: none !important;
+  border-color: #9333ea !important;
+  box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.15), 0 0 20px rgba(147, 51, 234, 0.3) !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* Buttons in Modal */
+div[role="dialog"] button {
+  border-radius: 14px !important;
+  padding: 14px 28px !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  border: none !important;
+}
+
+div[role="dialog"] button[type="submit"],
+div[role="dialog"] button[class*="primary"],
+div[role="dialog"] button[class*="Primary"],
+div[role="dialog"] button:not([class*="cancel"]):not([class*="Cancel"]):not([aria-label*="lose"]):not([aria-label*="Close"]) {
+  background: linear-gradient(135deg, #9333ea 0%, #db2777 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(147, 51, 234, 0.4) !important;
+}
+
+div[role="dialog"] button[type="submit"]:hover,
+div[role="dialog"] button[class*="primary"]:hover,
+div[role="dialog"] button[class*="Primary"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 24px rgba(147, 51, 234, 0.6) !important;
+}
+
+div[role="dialog"] button span {
+  color: #ffffff !important;
+}
+
+/* Secondary/Cancel Buttons */
+div[role="dialog"] button[class*="cancel"],
+div[role="dialog"] button[class*="Cancel"],
+div[role="dialog"] button[class*="secondary"],
+div[role="dialog"] button[class*="Secondary"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Close Button */
+div[role="dialog"] button[aria-label*="lose"],
+div[role="dialog"] button[aria-label*="Close"],
+div[role="dialog"] button[class*="close"],
+div[role="dialog"] button[class*="Close"] {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+div[role="dialog"] button[aria-label*="lose"]:hover,
+div[role="dialog"] button[aria-label*="Close"]:hover,
+div[role="dialog"] button[class*="close"]:hover,
+div[role="dialog"] button[class*="Close"]:hover {
+  background: rgba(239, 68, 68, 0.2) !important;
+  border-color: rgba(239, 68, 68, 0.5) !important;
+  transform: rotate(90deg) scale(1.1) !important;
+}
+
+/* Hide body scroll when modal open */
+body:has(div[role="dialog"]) {
+  overflow: hidden !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  div[role="dialog"] {
+    max-width: calc(100vw - 32px) !important;
+    max-height: calc(100vh - 32px) !important;
+    border-radius: 20px !important;
+  }
+  
+  div[role="dialog"] > div:first-child,
+  div[role="dialog"] header {
+    padding: 20px !important;
+  }
+  
+  div[role="dialog"] > div:not(:first-child):not(:last-child),
+  div[role="dialog"] [class*="content"],
+  div[role="dialog"] [class*="Content"] {
+    padding: 20px !important;
+  }
+}
+
+/* Success/Error Messages */
+div[role="dialog"] [class*="success"],
+div[role="dialog"] [class*="Success"] {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #86efac !important;
+  padding: 12px 16px !important;
+  border-radius: 12px !important;
+}
+
+div[role="dialog"] [class*="error"],
+div[role="dialog"] [class*="Error"],
+div[role="dialog"] [class*="warning"],
+div[role="dialog"] [class*="Warning"] {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #fca5a5 !important;
+  padding: 12px 16px !important;
+  border-radius: 12px !important;
+}

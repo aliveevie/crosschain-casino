@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react-refresh"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react-refresh/only-export-components": "off",
+    "no-console": "off",
+    "no-debugger": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "prefer-const": "off",
+    "no-empty": "off"
+  }
+}
+
